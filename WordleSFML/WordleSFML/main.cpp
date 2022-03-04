@@ -3,6 +3,6 @@
 int main() 
 {
 	SFMLGame game;
-	//game.gameLoop();
+	game.gameLoop();
 	return 0;
 }

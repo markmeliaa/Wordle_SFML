@@ -38,7 +38,7 @@ private:
 	// Font of the game reference
 	const sf::Font& _font;
 
-	// Used for the randomisation of the game (word selection...)
+	// Used for the randomisation of the game
 	std::default_random_engine _randomEngine;
 
 	// Reference to the active game window

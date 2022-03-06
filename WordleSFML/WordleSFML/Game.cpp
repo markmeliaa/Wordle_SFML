@@ -51,7 +51,7 @@ void Game::update(const float deltaTime)
 		_activeInterface->update(deltaTime);
 		if (_activeInterface->getResultState() == WndResultState::Finished && _activeOverlay == nullptr)
 		{
-			auto guessGrid = dynamic_cast<PuzzleWnd*>(_activateInterface)->getGuessGrid();
+			auto guessGrid = dynamic_cast<PuzzleWnd*>(_activeInterface)->getGuessGrid();
 			auto rules = guessGrid.getAllRules();
 			std::string solution = guessGrid.getSolution();
 			

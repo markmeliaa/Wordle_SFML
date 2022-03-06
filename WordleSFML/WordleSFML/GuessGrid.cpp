@@ -74,7 +74,7 @@ void GuessGrid::checkSolution()
 	for (int i = 0; i < _solution.length(); i++)
 	{
 		char guess = _guessLetters.at(_currentWordIndex).at(i).getLetter();
-		if (guess == solution.at(i))
+		if (guess == _solution.at(i))
 		{
 			_guessLetters.at(_currentWordIndex).at(i).setSolutionState(PuzzleLetter::SolutionState::CORRECT);
 			++solveCount;
@@ -93,7 +93,7 @@ void GuessGrid::checkSolution()
 				{
 					if (guess == _guessLetters.at(_currentWordIndex).at(j).getLetter())
 					{
-						if (guess == solution.at(j))
+						if (guess == _solution.at(j))
 						{
 							correctPositionThisLetter++;
 						}

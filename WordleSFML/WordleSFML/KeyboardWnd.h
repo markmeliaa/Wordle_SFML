@@ -32,13 +32,6 @@ public:
 	*/
 	virtual void handleMouseMove(const sf::Vector2i& mousePosition) override;
 
-	/*
-		Handles each keyboard input
-
-		@param keyCode is the key that gets pressed each time
-	*/
-	virtual void handleKeyInput(const sf::Keyboard::Key key) override;
-
 	// Gets the value of actionID and resets it to default -1
 	int getActionIDReset();
 

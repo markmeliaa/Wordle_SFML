@@ -32,7 +32,7 @@ PostGameWnd::PostGameWnd(const sf::IntRect& bounds, const sf::Font& font, const 
 
 	_histogram = std::make_unique<HorizontalHistogram>(histogramRect, font, playHistory->getHistory(), wonGame ? attempts - 1 : -1);
 
-	_totalPlayedText = std::make_unique<sf::Text>("Gams played: " + std::to_string(playHistory->getTotalPlayed()), font, 30);
+	_totalPlayedText = std::make_unique<sf::Text>("Games played: " + std::to_string(playHistory->getTotalPlayed()), font, 30);
 	_totalPlayedText->setPosition(sf::Vector2f(30, bounds.top + bounds.height / 2 - 75));
 	_winPercentText = std::make_unique<sf::Text>("Win %: " + std::to_string(playHistory->getWinPercent()), font, 30);
 	_winPercentText->setPosition(sf::Vector2f(30, bounds.top + bounds.height / 2 - 25));

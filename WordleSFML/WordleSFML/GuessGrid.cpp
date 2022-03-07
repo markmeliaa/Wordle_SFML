@@ -112,7 +112,7 @@ void GuessGrid::checkSolution()
 				}
 
 				// Flag as wrong positions only if within reaching the minimum
-				if (std::find(outOfPositionPositions.begin(), outOfPositionPositions.end(), 1) != outOfPositionPositions.end())
+				if (std::find(outOfPositionPositions.begin(), outOfPositionPositions.end(), i) != outOfPositionPositions.end())
 				{
 					_guessLetters.at(_currentWordIndex).at(i).setSolutionState(PuzzleLetter::SolutionState::WRONG_POS);
 				}
@@ -211,7 +211,7 @@ std::string GuessGrid::getShareString() const
 
 			else 
 			{
-				message << "black_large_square";
+				message << ":white_large_square:";
 			}
 		}
 		message << std::endl;

@@ -2,7 +2,7 @@
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
-#define FONT_FILE_PATH "../Fonts/JosefinSansB.tff"
+#define FONT_FILE_PATH "../Fonts/JosefinSansB.ttf"
 
 SFMLGame::SFMLGame()
 	: _window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "WORDLE (ES)", sf::Style::Titlebar | sf::Style::Close),
@@ -58,9 +58,9 @@ void SFMLGame::gameLoop()
 sf::Font SFMLGame::loadFont() 
 {
 	sf::Font font;
-	if (!font.loadFromFile(FONT_FILE_PATH)) 
+	if (!font.loadFromFile(FONT_FILE_PATH))
 	{
-		throw("Failed loading selected font.");
+		throw("Failed to load font.");
 	}
 
 	return font;

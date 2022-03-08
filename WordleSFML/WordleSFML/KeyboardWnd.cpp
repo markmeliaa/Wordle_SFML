@@ -74,7 +74,7 @@ void KeyboardWnd::applyRules(std::vector<std::string> rules)
 
 void KeyboardWnd::initialiseButtons(const sf::Font& font)
 {
-	std::vector<std::string> buttonText{ "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Check", "Z", "X", "C", "V", "B", "N", "M", "<" };
+	std::vector<std::string> buttonText{ "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Check", "Z", "X", "C", "V", "B", "N", "M", "Delete"};
 
 	int buttonWidth = 60;
 	int buttonHeight = 60;
@@ -101,11 +101,17 @@ void KeyboardWnd::initialiseButtons(const sf::Font& font)
 	posX = actualLeft;
 	posY += 10 + buttonHeight;
 	// Special case for "Check"
-	_buttons.emplace_back(Button(sf::IntRect(posX, posY, buttonWidth * 3, buttonHeight), buttonText.at(i), 1, font));
+	_buttons.emplace_back(Button(sf::IntRect(posX - 25, posY, buttonWidth * 3, buttonHeight), buttonText.at(i), 1, font));
 	i++;
 	posX += buttonWidth * 3 + 10;
+
 	// Bottom row Z to <
-	for (; i < buttonText.size(); i++, posX += buttonWidth + 10) {
-		_buttons.emplace_back(Button(sf::IntRect(posX, posY, buttonWidth, buttonHeight), buttonText.at(i), static_cast<int>(buttonText.at(i).at(0)), font));
+	for (; i < buttonText.size() - 1; i++, posX += buttonWidth + 10) {
+		_buttons.emplace_back(Button(sf::IntRect(posX - 25, posY, buttonWidth, buttonHeight), buttonText.at(i), static_cast<int>(buttonText.at(i).at(0)), font));
 	}
+	
+	// Special case for "Delete"
+	_buttons.emplace_back(Button(sf::IntRect(posX - 25, posY, buttonWidth * 2, buttonHeight), buttonText.at(i), static_cast<int>('<'), font));
+	i++;
+	posX += buttonWidth * 2 - 30;
 }

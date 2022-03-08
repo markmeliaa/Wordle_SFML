@@ -64,7 +64,7 @@ void Game::update(const float deltaTime)
 			{
 				_playHistory->insertHistoryLoss();
 			}
-			_activeOverlay = new PostGameWnd(_bounds, _font, solution, guessGrid.isSolved(), rules.size(), _playHistory, guessGrid.getShareString());
+			_activeOverlay = new PostGameWnd(_bounds, _font, solution, guessGrid.isSolved(), rules.size(), _playHistory, guessGrid.getWhiteShareString(), guessGrid.getBlackShareString());
 		}
 	}
 }

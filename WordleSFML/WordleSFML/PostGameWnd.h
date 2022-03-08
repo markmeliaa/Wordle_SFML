@@ -11,7 +11,7 @@ class PostGameWnd : public WndInterface
 public:
 	// Initialises the window with details of the game, a choice to start a new game and a button to quit
 	PostGameWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const bool wonGame,
-		const int attempts, const std::unique_ptr<PlayHistory>& playHistory, const std::string& shareStr);
+		const int attempts, const std::unique_ptr<PlayHistory>& playHistory, const std::string& whiteShareStr, const std::string& blackShareStr);
 	virtual ~PostGameWnd() = default;
 
 	// Does nothing
@@ -72,7 +72,10 @@ private:
 	// Text showing the best win streak
 	std::unique_ptr<sf::Text> _maxStreakText;
 
-	// Text that shares the result
-	std::string _shareStr;
+	// Text that shares the result (White Version)
+	std::string _whiteShareStr;
+
+	// Text that shares the result (Black Version)
+	std::string _blackShareStr;
 };
 

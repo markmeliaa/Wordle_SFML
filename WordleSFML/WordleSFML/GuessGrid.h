@@ -48,8 +48,11 @@ public:
 	// Get the solution that the user is matching
 	std::string getSolution() const;
 
-	// Gets a string representing the final state of the puzzle
-	std::string getShareString() const;
+	// Gets a string representing the final state of the puzzle (White version)
+	std::string getWhiteShareString() const;
+
+	// Gets a string representing the final state of the puzzle (Black version)
+	std::string getBlackShareString() const;
 
 private:
 	// The collection of letters

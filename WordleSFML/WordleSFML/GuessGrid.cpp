@@ -187,7 +187,7 @@ std::string GuessGrid::getSolution() const
 	return _solution;
 }
 
-std::string GuessGrid::getShareString() const
+std::string GuessGrid::getWhiteShareString() const
 {
 	std::stringstream message;
 	message << "Markk's Custom Wordle Game" << std::endl << "\"" << _solution << "\": ";
@@ -212,6 +212,39 @@ std::string GuessGrid::getShareString() const
 			else 
 			{
 				message << ":white_large_square:";
+			}
+		}
+		message << std::endl;
+	}
+
+	return message.str();
+}
+
+std::string GuessGrid::getBlackShareString() const
+{
+	std::stringstream message;
+	message << "Markk's Custom Wordle Game" << std::endl << "\"" << _solution << "\": ";
+	message << (_solved ? "Solved: " : "Did not solve: ") << (_currentWordIndex) << "/6" << std::endl << std::endl;
+
+	// Generate the puzzle coloured view
+	for (int i = 0; i < _currentWordIndex; i++)
+	{
+		std::stringstream ruleStream;
+		for (int j = 0; j < _solution.length(); j++)
+		{
+			if (_guessLetters.at(i).at(j).getSolutionState() == PuzzleLetter::SolutionState::CORRECT)
+			{
+				message << ":green_square:";
+			}
+
+			else if (_guessLetters.at(i).at(j).getSolutionState() == PuzzleLetter::SolutionState::WRONG_POS)
+			{
+				message << ":yellow_square:";
+			}
+
+			else
+			{
+				message << ":black_large_square:";
 			}
 		}
 		message << std::endl;

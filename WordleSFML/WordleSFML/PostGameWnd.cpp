@@ -1,7 +1,7 @@
 #include "PostGameWnd.h"
 
-PostGameWnd::PostGameWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const bool wonGame, const int attempts, const std::unique_ptr<PlayHistory>& playHistory, const std::string& shareStr)
-	: WndInterface(bounds), _shareStr(shareStr)
+PostGameWnd::PostGameWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const bool wonGame, const int attempts, const std::unique_ptr<PlayHistory>& playHistory, const std::string& whiteShareStr, const std::string& blackShareString)
+	: WndInterface(bounds), _whiteShareStr(whiteShareStr), _blackShareStr(blackShareString)
 {
 	_resultState = WndResultState::NothingState;
 
@@ -24,7 +24,9 @@ PostGameWnd::PostGameWnd(const sf::IntRect& bounds, const sf::Font& font, const 
 	_buttons.emplace_back(Button(sf::IntRect(bounds.left + bounds.width / 2 - 225, bounds.top + bounds.height * 3 / 4 - 70, 200, 60), "Play Again", 0, font));
 	_buttons.emplace_back(Button(sf::IntRect(bounds.left + bounds.width / 2 + 25, bounds.top + bounds.height * 3 / 4 - 70, 200, 60), "Exit Game", 1, font));
 
-	_buttons.emplace_back(Button(sf::IntRect(bounds.left + bounds.width * 3 / 4 + 25, bounds.top + bounds.height / 2 - 30, 200, 60), "Share", 2, font));
+	_buttons.emplace_back(Button(sf::IntRect(bounds.left + bounds.width * 3 / 4 + 30, bounds.top + bounds.height / 2 - 60, 240, 60), "Share in White", 2, font));
+	_buttons.at(_buttons.size() - 1).setBackgroundColour(sf::Color(93, 141, 74));
+	_buttons.emplace_back(Button(sf::IntRect(bounds.left + bounds.width * 3 / 4 + 30, bounds.top + bounds.height / 2 + 30, 240, 60), "Share in Black", 3, font));
 	_buttons.at(_buttons.size() - 1).setBackgroundColour(sf::Color(93, 141, 74));
 
 	sf::IntRect histogramRect = sf::IntRect(bounds.left + bounds.width / 4 + 30, bounds.top + bounds.height / 4 + 10 + 50 + 40 + 10,
@@ -77,7 +79,11 @@ void PostGameWnd::handleMousePress(const sf::Vector2i& mousePosition, bool isLef
 
 			else if (button.getActionID() == 2)
 			{
-				sf::Clipboard::setString(_shareStr);
+				sf::Clipboard::setString(_whiteShareStr);
+			}
+			else if (button.getActionID() == 3)
+			{
+				sf::Clipboard::setString(_blackShareStr);
 			}
 		}
 	}

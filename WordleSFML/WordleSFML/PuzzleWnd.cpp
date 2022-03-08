@@ -23,6 +23,7 @@ void PuzzleWnd::update(const float deltaTime)
 
 void PuzzleWnd::draw(sf::RenderWindow& renderWindow) const 
 {
+	//renderWindow.clear(sf::Color(200, 200, 200, 200));
 	renderWindow.draw(_gameTitle);
 	renderWindow.draw(_author);
 	_keyboard.draw(renderWindow);

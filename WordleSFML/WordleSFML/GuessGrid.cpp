@@ -70,6 +70,18 @@ void GuessGrid::checkSolution()
 	if (_solved || _insertPosition != _guessLetters.at(_currentWordIndex).size())
 		return;
 
+	/*
+	std::string guessWord = "";
+	for (int i = 0; i < _solution.length(); i++)
+	{
+		char guess = _guessLetters.at(_currentWordIndex).at(i).getLetter();
+		guessWord += guess;
+	}
+	
+	if (_puzzleWnd._wordDatabase->isValidWord(guessWord))
+		return;
+	*/
+
 	int solveCount = 0;
 	for (int i = 0; i < _solution.length(); i++)
 	{

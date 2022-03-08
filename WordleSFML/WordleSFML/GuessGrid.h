@@ -54,6 +54,9 @@ public:
 	// Gets a string representing the final state of the puzzle (Black version)
 	std::string getBlackShareString() const;
 
+	// Used keys
+	bool _usedKeyCheck;
+
 private:
 	// The collection of letters
 	std::vector<std::vector<PuzzleLetter>> _guessLetters;
@@ -66,9 +69,6 @@ private:
 
 	// When true it means the solution is found
 	bool _solved;
-
-	// Used keys
-	bool _usedKeyCheck;
 
 	// Solution to check against
 	const std::string _solution;

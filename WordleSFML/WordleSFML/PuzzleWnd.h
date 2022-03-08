@@ -2,6 +2,7 @@
 #include "WndInterface.h"
 #include "KeyboardWnd.h"
 #include "GuessGrid.h"
+#include "WordDatabase.h"
 
 //Manages the keyboard and inputs from the user.
 
@@ -45,6 +46,9 @@ public:
 	// Checks if the game continues or has ended
 	WndResultState getResultState() const override;
 
+	// Used to check if a word is correctly written
+	std::unique_ptr<WordDatabase> _wordDatabase;
+
 private:
 	// Reference to the font that we are using
 	const sf::Font& _font;
@@ -63,5 +67,8 @@ private:
 
 	// The current window state, changes to finished when ready to close
 	WndResultState _currentState;
+
+	// Used for the randomisation of the game
+	std::default_random_engine _randomEngine;
 };
 

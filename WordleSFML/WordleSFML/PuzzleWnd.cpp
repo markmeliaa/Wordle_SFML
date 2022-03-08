@@ -1,4 +1,6 @@
 #include "PuzzleWnd.h"
+#include "Game.h"
+#include <chrono>       // std::chrono::system_clock
 
 PuzzleWnd::PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution)
 	: WndInterface(bounds), _font(font), _gameTitle("Wordle", font, 50), _author("By Mark Meliá", font, 25),
@@ -7,6 +9,10 @@ PuzzleWnd::PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std:
 	_gameTitle.setPosition(sf::Vector2f(10, 10));
 	_author.setPosition(sf::Vector2f(10, 10 + 10 + 50));
 	_currentState = WndResultState::NothingState;
+
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	_randomEngine = std::default_random_engine(seed);
+	_wordDatabase = std::make_unique<WordDatabase>(_randomEngine);
 }
 
 PuzzleWnd::~PuzzleWnd()
@@ -41,6 +47,11 @@ void PuzzleWnd::handleMousePress(const sf::Vector2i& mousePosition, bool isLeft)
 	else if (action == 1)
 	{
 		_guessGrid.checkSolution();
+		_guessGrid._usedKeyCheck = true;
+		if (_guessGrid.getKeyCheckReset())
+		{
+			_keyboard.applyRules(_guessGrid.getAllRules());
+		}
 	}
 	else if (action != -1)
 	{

@@ -5,7 +5,7 @@
 #define FONT_FILE_PATH "../Fonts/JosefinSansB.ttf"
 
 SFMLGame::SFMLGame()
-	: _window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "WORDLE (ES)", sf::Style::Titlebar | sf::Style::Close),
+	: _window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "WORDLE by Mark Meliá", sf::Style::Titlebar | sf::Style::Close),
 	_font(loadFont()), _game(sf::IntRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), _font)
 {
 }

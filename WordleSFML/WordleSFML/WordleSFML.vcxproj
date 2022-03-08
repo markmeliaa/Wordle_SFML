@@ -155,9 +155,18 @@
     <ClInclude Include="PostGameWnd.h" />
     <ClInclude Include="PuzzleLetter.h" />
     <ClInclude Include="PuzzleWnd.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SFMLGame.h" />
     <ClInclude Include="WndInterface.h" />
     <ClInclude Include="WordDatabase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WordleSFML.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Game Icon\wordle-icon.ico" />
+    <Image Include="..\Game Icon\wordle-icon.png" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

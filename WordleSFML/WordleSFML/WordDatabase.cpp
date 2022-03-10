@@ -9,14 +9,14 @@ WordDatabase::WordDatabase(std::default_random_engine& randomEngine)
 	loadDatabase();
 }
 
-bool WordDatabase::isValidWord(const std::string& word) const
-{
-	return std::find(_words.begin(), _words.end(), word) != _words.end();
-}
-
 std::string WordDatabase::getRandomWord() const
 {
 	return _words.at(_randomEngine() % _words.size());
+}
+
+std::vector<std::string> WordDatabase::getListWords() const
+{
+	return _words;
 }
 
 void WordDatabase::loadDatabase()

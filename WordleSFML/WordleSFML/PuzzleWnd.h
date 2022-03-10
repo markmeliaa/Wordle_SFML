@@ -10,7 +10,7 @@ class PuzzleWnd : public WndInterface
 {
 public:
 	// Initialises the game with a new word to be guessed
-	PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution);
+	PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const std::vector<std::string>& words);
 	virtual ~PuzzleWnd();
 
 	// Update the window state

@@ -15,7 +15,7 @@ Game::Game(const sf::IntRect& gameBounds, const sf::Font& font)
 	_activeInterface = nullptr;
 	_activeOverlay = nullptr;
 
-	_activeInterface = new PuzzleWnd(gameBounds, font, _wordDatabase->getRandomWord());
+	_activeInterface = new PuzzleWnd(gameBounds, font, _wordDatabase->getRandomWord(), _wordDatabase->getListWords());
 }
 
 Game::~Game() 
@@ -37,7 +37,7 @@ void Game::update(const float deltaTime)
 			delete _activeOverlay;
 			_activeOverlay = nullptr;
 			delete _activeInterface;
-			_activeInterface = new PuzzleWnd(_bounds, _font, _wordDatabase->getRandomWord());
+			_activeInterface = new PuzzleWnd(_bounds, _font, _wordDatabase->getRandomWord(), _wordDatabase->getListWords());
 		}
 
 		else if (_activeOverlay->getResultState() == WndResultState::Quit)

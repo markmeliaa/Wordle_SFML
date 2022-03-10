@@ -8,7 +8,7 @@ class GuessGrid : public WndInterface
 {
 public:
 	// Initialises the full grid as empty elements that will be filled
-	GuessGrid(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, int maxGuesses);
+	GuessGrid(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const std::vector<std::string>& words, int maxGuesses);
 	virtual ~GuessGrid() = default;
 
 	// Does nothing
@@ -29,6 +29,9 @@ public:
 
 	// Removes one letter if possible (does nothing if there is no letter to remove in the current guess)
 	void backSpace();
+
+	// Returns true if the word typed is in the database
+	bool isValidWord(const std::string& word, const std::vector<std::string>& words) const;
 	
 	// Tests the given word
 	void checkSolution();
@@ -69,6 +72,9 @@ private:
 
 	// When true it means the solution is found
 	bool _solved;
+
+	// The list of words in the database
+	std::vector<std::string> _words;
 
 	// Solution to check against
 	const std::string _solution;

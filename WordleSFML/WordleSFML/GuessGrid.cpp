@@ -1,8 +1,8 @@
 #include "GuessGrid.h"
 #include <sstream>
 
-GuessGrid::GuessGrid(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const int maxGuesses)
-	: WndInterface(bounds), _solution(solution)
+GuessGrid::GuessGrid(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const std::vector<std::string>& words, const int maxGuesses)
+	: WndInterface(bounds), _solution(solution), _words(words)
 {
 	initialiseAllGuesses(font, solution.length(), maxGuesses);
 	_solved = false;
@@ -64,13 +64,17 @@ void GuessGrid::backSpace()
 	_guessLetters.at(_currentWordIndex).at(_insertPosition).setLetter(' ');
 }
 
+bool GuessGrid::isValidWord(const std::string& word, const std::vector<std::string>& words) const
+{
+	return std::find(words.begin(), words.end(), word) != words.end();
+}
+
 void GuessGrid::checkSolution()
 {
 	// If solved or word is not full -> DO NOTHING
 	if (_solved || _insertPosition != _guessLetters.at(_currentWordIndex).size())
 		return;
 
-	/*
 	std::string guessWord = "";
 	for (int i = 0; i < _solution.length(); i++)
 	{
@@ -78,9 +82,9 @@ void GuessGrid::checkSolution()
 		guessWord += guess;
 	}
 	
-	if (_puzzleWnd._wordDatabase->isValidWord(guessWord))
+	if (!isValidWord(guessWord, _words))
 		return;
-	*/
+
 
 	int solveCount = 0;
 	for (int i = 0; i < _solution.length(); i++)

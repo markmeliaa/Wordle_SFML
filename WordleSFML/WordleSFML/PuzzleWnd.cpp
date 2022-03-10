@@ -2,9 +2,9 @@
 #include "Game.h"
 #include <chrono>       // std::chrono::system_clock
 
-PuzzleWnd::PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution)
+PuzzleWnd::PuzzleWnd(const sf::IntRect& bounds, const sf::Font& font, const std::string& solution, const std::vector<std::string>& words)
 	: WndInterface(bounds), _font(font), _gameTitle("Wordle", font, 50), _author("By Mark Meliá", font, 25),
-	_keyboard(bounds, font), _guessGrid(bounds, font, solution, 6)
+	_keyboard(bounds, font), _guessGrid(bounds, font, solution, words, 6)
 {
 	_gameTitle.setPosition(sf::Vector2f(10, 10));
 	_author.setPosition(sf::Vector2f(10, 10 + 10 + 50));

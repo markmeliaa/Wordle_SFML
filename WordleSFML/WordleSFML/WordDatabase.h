@@ -12,11 +12,11 @@ public:
 	WordDatabase(std::default_random_engine& randomEngine);
 	virtual ~WordDatabase() = default;
 
-	// Returns true if the word typed is in the database
-	bool isValidWord(const std::string& word) const;
-
 	// Returns a random word from the database
 	std::string getRandomWord() const;
+
+	// Returns the list of words
+	std::vector<std::string> getListWords() const;
 
 private:
 	// The database

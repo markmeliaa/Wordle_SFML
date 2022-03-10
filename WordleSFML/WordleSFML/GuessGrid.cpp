@@ -206,7 +206,7 @@ std::string GuessGrid::getSolution() const
 std::string GuessGrid::getWhiteShareString() const
 {
 	std::stringstream message;
-	message << "Markk's Custom Wordle Game" << std::endl << "\"" << _solution << "\": ";
+	message << "Mark Melia's Custom Wordle Game" << std::endl << "\"" << _solution << "\": ";
 	message << (_solved ? "Solved: " : "Did not solve: ") << (_currentWordIndex) << "/6" << std::endl << std::endl;
 
 	// Generate the puzzle coloured view

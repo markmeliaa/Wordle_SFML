@@ -1,7 +1,7 @@
 # Wordle_SFML
 The basic Wordle game developed in SFML.  
   
-I used [Squirrelbear's project](https://github.com/Squirrelbear/Wordle-CPP-SMFL) as a reference and then I modified it with some personal changes:
+The idea was to mimic [Squirrelbear's project](https://github.com/Squirrelbear/Wordle-CPP-SMFL) and then update their idea with some personal changes:
 * Added a day/night mode for the sharing string (you can share it on Discord to see the result)
 * Changed the typo so it looks better
 * Checked if a word introduced is an existing word before comparing with the solution
